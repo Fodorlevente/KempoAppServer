@@ -1,7 +1,8 @@
-const models = require('../../models/db');
+const db = require('../../models/db');
+const { User }  = require('../../models/user');
 
 exports.allUsers = (req, res) => {
-    models.User.findAll()
+    db.models.User.findAll()
     .then(users => {
         res.json(users);
     })
@@ -9,6 +10,7 @@ exports.allUsers = (req, res) => {
         console.log(error);
         res.status(404).send(error);
     })
+    
 }
 
 exports.saveUser = (req, res) => {
