@@ -39,9 +39,6 @@
 
 const { Sequelize } = require('sequelize');
 
-// In a real app, you should keep the database connection URL as an environment variable.
-// But for this example, we will just use a local SQLite database.
-// const sequelize = new Sequelize(process.env.DB_CONNECTION_URL);
 const db = new Sequelize({
   host: 'localhost',
 	dialect: 'sqlite',
