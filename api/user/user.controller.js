@@ -1,27 +1,63 @@
 const db = require('../../models/db');
-const { User }  = require('../../models/user');
 
 exports.allUsers = (req, res) => {
     db.models.User.findAll()
     .then(users => {
-        res.json(users);
+        res.status(200).json(users);
     })
     .catch(error => {
         console.log(error);
-        res.status(404).send(error);
+        res.status(400).send(error);
     })
-    
 }
 
 exports.saveUser = (req, res) => {
-    const name = req.body.name;
-    models.User.create({ name })
+    const { name, gender, birth_date, belt_degree, budapoass_number, validated} = req.body;
+    db.models.User.create({
+        name,
+        gender,
+        birth_date,
+        belt_degree,
+        budapoass_number,
+        validated
+     })
     .then(user => {
-        res.json(user);
+        res.status(200).json(user);
     })
     .catch(error => {
         console.log(error);
-        res.status(404).send(error);
+        res.status(400).send(error);
     })
 }
 
+exports.singleUser = (req, res) => {
+    db.models.User.findByPk(req.params.id)
+    .then(user => { 
+        if(user === null){
+            res.sendStatus(404);
+        }else{
+            res.status(200).json(user);
+        }
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(400).send(error);
+    })
+}
+
+exports.deleteUser = (req, res) => {
+        db.models.User.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (deletedRecord) {
+            if(deletedRecord === 1){
+                res.status(200).json({message:"Deleted successfully"});          
+            }else{
+                res.status(409).json({message:"record not found"})
+            }
+        })
+        .catch(error => {
+            res.status(400).send(error);
+        })
+}

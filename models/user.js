@@ -1,4 +1,3 @@
-const { sequelize } = require("./db");
 const Sequelize = require('sequelize');
 const { belts } = require('./belts');
 
@@ -15,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             type: Sequelize.ENUM('Férfi', 'Nő'),
             allowNull: false,
             validate: {
-                notEmpty: true,
-                isAlpha: true
+                notEmpty: true
             }
         },
         birth_date: {
@@ -32,8 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             values: [...belts],
             allowNull: false,
             validate: {
-                notEmpty: true,
-                isAlpha: true
+                notEmpty: true
             }
         },
         budapoass_number: {
