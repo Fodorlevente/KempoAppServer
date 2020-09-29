@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const { belts } = require('./belts');
+const { qualifications } = require('./qualifications');
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
@@ -12,6 +13,22 @@ module.exports = (sequelize, DataTypes) => {
         },
         gender: {
             type: Sequelize.ENUM('Férfi', 'Nő'),
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        weight: {
+            type: sequelize.INTEGER,
+            allowNull: false,
+            valdiate: {
+                notEmpty: true,
+                isNumeric: true
+            }
+        },
+        qualification: {
+            type: Sequelize.ENUM,
+            values: [...qualifications],
             allowNull: false,
             validate: {
                 notEmpty: true

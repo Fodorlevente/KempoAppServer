@@ -12,10 +12,12 @@ exports.allUsers = (req, res) => {
 }
 
 exports.saveUser = (req, res) => {
-    const { name, gender, birth_date, belt_degree, budopass_number, validated} = req.body;
+    const { name, gender, weight, qualification, birth_date, belt_degree, budopass_number, validated} = req.body;
     db.models.User.create({
         name,
         gender,
+        weight,
+        qualification,
         birth_date,
         belt_degree,
         budopass_number,
@@ -63,10 +65,12 @@ exports.deleteUser = (req, res) => {
 }
 
 exports.updateUser = (req, res) => {
-    const { name, gender, birth_date, belt_degree, budopass_number, validated} = req.body;
+    const { name, gender, weight, qualification, birth_date, belt_degree, budopass_number, validated} = req.body;
     db.models.User.update({
         name,
         gender,
+        weight,
+        qualification,
         birth_date,
         belt_degree,
         budopass_number,
