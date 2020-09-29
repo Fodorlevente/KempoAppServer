@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-const { belts } = require('./belts');
-const { qualifications } = require('./qualifications');
+const { belts } = require('./config/belts');
+const { qualifications } = require('./config/qualifications');
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {

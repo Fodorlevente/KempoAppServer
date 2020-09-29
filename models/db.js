@@ -20,5 +20,7 @@ for (const modelDefiner of modelDefiners) {
 	modelDefiner(db);
 }
 
+require('./associations')(db);
+
 // We export the sequelize connection instance to be used around our app.
 module.exports = db;
