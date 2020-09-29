@@ -12,13 +12,13 @@ exports.allUsers = (req, res) => {
 }
 
 exports.saveUser = (req, res) => {
-    const { name, gender, birth_date, belt_degree, budapoass_number, validated} = req.body;
+    const { name, gender, birth_date, belt_degree, budopass_number, validated} = req.body;
     db.models.User.create({
         name,
         gender,
         birth_date,
         belt_degree,
-        budapoass_number,
+        budopass_number,
         validated
      })
     .then(user => {
@@ -60,4 +60,27 @@ exports.deleteUser = (req, res) => {
         .catch(error => {
             res.status(400).send(error);
         })
+}
+
+exports.updateUser = (req, res) => {
+    const { name, gender, birth_date, belt_degree, budopass_number, validated} = req.body;
+    db.models.User.update({
+        name,
+        gender,
+        birth_date,
+        belt_degree,
+        budopass_number,
+        validated
+     },{
+         where: {
+            id: req.params.id
+         }
+     })
+    .then(user => {
+        res.status(200).json(user);
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(400).send(error);
+    })
 }

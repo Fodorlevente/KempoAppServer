@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "nodemon": "^1.18.5",
+    "pm2": "^4.4.1",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.0"

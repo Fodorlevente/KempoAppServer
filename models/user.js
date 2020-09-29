@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        budapoass_number: {
+        budopass_number: {
             type: Sequelize.STRING,
             allowNull: false,
             unique: true,
