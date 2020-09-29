@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         weight: {
-            type: sequelize.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             valdiate: {
                 notEmpty: true,

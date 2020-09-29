@@ -10,6 +10,7 @@ const db = new Sequelize({
 
 const modelDefiners = [
 	require('./user'),
+	require('./team'),
 	// Add more models here...
 	// require('./models/item'),
 ];

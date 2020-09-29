@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
                 isUUID: 4,
             }
         },
-        kempo_member: {
+        kempo_association_member: {
             type: Sequelize.BOOLEAN,
             allowNull: false,
             validate: {
