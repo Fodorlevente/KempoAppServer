@@ -1,12 +1,19 @@
-const controller = require('./user.controller');
+const authController = require('./auth.controller');
+
 const express = require('express');
 const router = express.Router();
 
-router.get('/users', controller.allUsers)
-router.post('/users', controller.saveUser);
-router.get('/users/:id', controller.singleUser);
-router.delete('/users/:id', controller.deleteUser);
-router.put('/users/:id', controller.updateUser);
+const { body, check, oneOf, validationResult } = require('express-validator');
+
+router.post('/user/registration', oneOf([
+    [
+      check('email').exists(),
+      check('password').exists()
+    ]
+  ]),
+    authController.saveUser);
+router.post('/user/login', authController.checkUser);
 
 
 module.exports = router;
+

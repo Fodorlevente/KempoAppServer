@@ -17,7 +17,7 @@ require('./middleware/middleware')(app);
 require('./api')(app);
 
 // connect to DB then run the server
-db.sync({force : false}).then(() => {
+db.sync({force : true}).then(() => {
     app.listen(port, () => {
         console.log('running server on port ' + port);
     })

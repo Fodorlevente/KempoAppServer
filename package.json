@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "apicache": "^1.5.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-validator": "^6.6.1",
     "nodemon": "^1.18.5",
     "pm2": "^4.4.1",
     "sequelize": "^6.3.5",
