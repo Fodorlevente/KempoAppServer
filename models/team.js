@@ -18,29 +18,12 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        email: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-                isEmail: true,
-            }
-        },
         country: {
             type: Sequelize.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true,
                 notNull: true
-            }
-        },
-        password: {
-            type: Sequelize.UUID,
-            defaultValue: Sequelize.UUIDV4,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-                isUUID: 4,
             }
         },
         kempo_association_member: {
