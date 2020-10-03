@@ -9,8 +9,10 @@ const db = new Sequelize({
 });
 
 const modelDefiners = [
-	require('./user'),
+	require('./competitor'),
 	require('./team'),
+	require('./user'),
+	require('./credential')
 	// Add more models here...
 	// require('./models/item'),
 ];
