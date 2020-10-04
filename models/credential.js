@@ -8,13 +8,6 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 notEmpty: true
             }
-        },
-        salt: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
         }
     });
 
