@@ -5,12 +5,12 @@ const { check } = require('express-validator');
 const router = express.Router();
 
 
-const WRONG_PASSWORD_MSG = `Password should not be empty, 
-                  minimum eight characters,
-                  at least one letter, 
-                  one number and one special character`;
+const WRONG_PASSWORD_MSG = ['Password should not be empty,', 
+                  'minimum eight characters,',
+                  'at least one letter,',
+                  'one number and one special character'].join('');
 
-const password_regex = new RegExp("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/", "i");
+const password_regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
 router.post('/user/registration',
   [
@@ -18,9 +18,8 @@ router.post('/user/registration',
       .exists()
       .normalizeEmail()
       .isEmail(),
-    check('password', 'Password field is required')
+    check('password', WRONG_PASSWORD_MSG)
       .exists()
-      .withMessage(WRONG_PASSWORD_MSG)
       .isLength({ min: 8 })
       .matches(password_regex)
   ],
@@ -32,9 +31,8 @@ router.post('/user/login',
       .exists()
       .normalizeEmail()
       .isEmail(),
-    check('password', 'Password field is required')
+    check('password', WRONG_PASSWORD_MSG)
       .exists()
-      .withMessage(WRONG_PASSWORD_MSG)
       .isLength({ min: 8 })
       .matches(password_regex)
   ],
