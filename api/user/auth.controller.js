@@ -8,7 +8,7 @@ const validateRequest = (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-        res.status(403).send(errors, req, res);
+        res.status(403).send(errors);
         return false;
     }
 }
@@ -26,7 +26,10 @@ exports.saveUser = async (req, res) => {
             }
         )
             .then(credential => {
-                res.status(200).send(credential);
+                res.status(200).send(user);
+            })
+            .catch(error => {
+                res.status(403).send("AAAAAAAAAA");
             })
     } catch {
         res.status(403).send();
