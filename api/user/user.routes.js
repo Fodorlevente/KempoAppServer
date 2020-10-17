@@ -4,6 +4,7 @@ const express = require('express');
 const { check } = require('express-validator');
 const router = express.Router();
 
+const withAuth = require('../../middleware/auth.middleware');
 
 const WRONG_PASSWORD_MSG = ['Password should not be empty,', 
                   'minimum eight characters,',
@@ -25,7 +26,7 @@ router.post('/user/registration',
   ],
   authController.saveUser);
 
-router.post('/user/login',
+router.post('/user/login', 
   [
     check('email', 'Email is not valid')
       .exists()
@@ -36,7 +37,11 @@ router.post('/user/login',
       .isLength({ min: 8 })
       .matches(password_regex)
   ],
-  authController.checkUser);
+  authController.checkUser, withAuth);
+
+  router.get('/user/token', withAuth, function(req, res) {
+    res.json("Alma alma");
+  });
 
 
 module.exports = router;
